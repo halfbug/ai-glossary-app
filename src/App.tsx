@@ -205,7 +205,7 @@ console.log('App component rendered');
       <footer className="bg-gradient-to-r from-nexi-3 to-nexi-1 py-8 text-nexi-7">
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
               <p className="text-center text-sm">
-                &copy; 2023 AI Glossary. All rights reserved.
+                &copy; 2025 Nexi.Bot - AI Glossary. All rights reserved.
               </p>
             </div>
       </footer>
