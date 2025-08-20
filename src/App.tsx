@@ -52,15 +52,24 @@ console.log('App component rendered');
 
   const filteredGlossary = useMemo(() => {
     return glossaryData.filter(item => {
-      const matchesSearch = item.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           item.definition.toLowerCase().includes(searchTerm.toLowerCase());
+      const cloudServices = [
+        ...item.cloudServices.aws,
+        ...item.cloudServices.gcp,
+        ...item.cloudServices.azure
+      ];
+      const matchesSearch = 
+        item.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        item.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        cloudServices.some(service => 
+          service.toLowerCase().includes(searchTerm.toLowerCase())
+        );
       const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-700 font-sans">
+    <div className="min-h-screen font-sans bg-nexi-7">
       <header className="glossary-header bg-gradient-to-r from-nexi-1 to-nexi-3 shadow-lg">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-white">
